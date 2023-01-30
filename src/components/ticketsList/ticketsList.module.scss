@@ -2,6 +2,7 @@
 
 .ticketsList {
     margin-left: 20px;
+    width: 504px;
     display: flex;
     flex-direction: column;
 
@@ -56,6 +57,7 @@
 }
 
 .notFound {
+    margin-top: 40px;
     align-self: center;
     font-family: 'Open Sans';
     font-size: 20px;
