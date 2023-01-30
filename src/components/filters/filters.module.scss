@@ -16,7 +16,7 @@
     @media (max-width: $screen-tablet) {
         margin: 0 auto;
         width: 95%;
-        height: 180px;
+        height: 205px;
         gap: 5px;
       }
 }
@@ -42,7 +42,7 @@
 
     @media (max-width: $screen-tablet) {
         line-height: 10px;
-        height: 20px;
+        height: 25px;
       }
 }
 
@@ -52,7 +52,9 @@
 }
 
 .input {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .customBox {
