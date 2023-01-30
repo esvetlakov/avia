@@ -4,9 +4,7 @@ import { setAllStops, setNoStops, setOneStop, setTwoStops, setThreeStops } from 
 
 import classes from './filters.module.scss';
 
-function Filters(props) {
-  const { stops, none, all, one, two, three } = props;
-
+function Filters({ stops, none, all, one, two, three }) {
   return (
     <div className={classes.filters}>
       <span className={classes['filters-header']}>Количество пересадок</span>

@@ -50,8 +50,7 @@ export const getTravelTime = (durationInMinutes) => {
     : hoursAndMinutes;
 };
 
-export default function TicketCard(props) {
-  const { ticket, forward, backward } = props;
+export default function TicketCard({ ticket, forward, backward }) {
   const { carrier, carrierLogoPath, price } = ticket;
 
   return (

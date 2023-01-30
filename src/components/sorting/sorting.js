@@ -4,9 +4,7 @@ import { setCheap, setFast, setOptimal } from '../../redux/actions/actions';
 
 import classes from './sorting.module.scss';
 
-function Sorting(props) {
-  const { sortBy, cheap, fast, optimal } = props;
-
+function Sorting({ sortBy, cheap, fast, optimal }) {
   return (
     <div className={classes.sorting}>
       <button

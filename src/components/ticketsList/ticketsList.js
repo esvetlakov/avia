@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { ticketsLoad, loadSearchId, loadMoreBtn } from '../../redux/actions/actions';
+import { sortByCheapPrice, sortByOptimal, sortByDuration } from '../../utils/sortingFunctions';
+import filterByTransferFilters from '../../utils/filter';
 import Sorting from '../sorting/sorting';
 import TicketCard from '../ticketCard';
 
 import classes from './ticketsList.module.scss';
 
-function TicketsList(props) {
-  const { stops, sort, ticketsData, searchID, currentShowingCount, search, load, loadMore, stop } = props;
+function TicketsList({ stops, sort, ticketsData, searchID, currentShowingCount, search, load, loadMore, stop }) {
   const { sorting } = sort;
 
   useEffect(() => {
@@ -21,50 +22,6 @@ function TicketsList(props) {
     }
   }, [searchID, load]);
 
-  const getTotalDuration = (ticket) => {
-    const segA = ticket.segments[0];
-    const segB = ticket.segments[1];
-
-    return segA.duration + segB.duration;
-  };
-
-  const sortByCheapPrice = (ticketA, ticketB) => ticketA.price - ticketB.price;
-
-  const sortByDuration = (ticketA, ticketB) => {
-    const durationA = getTotalDuration(ticketA);
-    const durationB = getTotalDuration(ticketB);
-
-    return durationA - durationB;
-  };
-
-  const sortByOptimal = (ticketA, ticketB) => {
-    const byPrice = sortByCheapPrice(ticketA, ticketB) / 10;
-    const byDuration = sortByDuration(ticketA, ticketB);
-    return byPrice + byDuration;
-  };
-
-  const filterByTransferFilters = (ticket) => {
-    let valid = false;
-    const stopsA = ticket.segments[0].stops.length;
-    const stopsB = ticket.segments[1].stops.length;
-    if (stops.all === true) {
-      return true;
-    }
-    if (stops.noStops === true) {
-      valid = stopsA === 0 || stopsB === 0;
-    }
-    if (stops.oneStop === true) {
-      valid = stopsA === 1 || stopsB === 1;
-    }
-    if (stops.twoStops === true) {
-      valid = stopsA === 2 || stopsB === 2;
-    }
-    if (stops.threeStops === true) {
-      valid = stopsA === 3 || stopsB === 3;
-    }
-
-    return valid;
-  };
   const processTickets = (tickets) => {
     const newTickets = tickets;
 
@@ -76,7 +33,7 @@ function TicketsList(props) {
       newTickets.sort(sortByOptimal);
     }
 
-    return newTickets.filter((ticket) => filterByTransferFilters(ticket)).slice(0, currentShowingCount);
+    return newTickets.filter((ticket) => filterByTransferFilters(ticket, stops)).slice(0, currentShowingCount);
   };
 
   const processedTickets = processTickets(ticketsData, sorting, stops, currentShowingCount);
