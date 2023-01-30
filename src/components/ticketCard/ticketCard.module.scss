@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+
+.ticket {
+  background-color: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+  @media (max-width: $screen-tablet) {
+    width: calc(95% - 40px);
+    padding: 20px;
+    margin: 10px auto;
+    margin-top: 0px;
+  }
+
+  font-family: 'Open Sans';
+}
+
+.flexRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gridRow {
+  display: grid;
+  grid-template-columns: 3fr 2.6fr 2fr;
+  grid-column: 2;
+}
+
+.logo {
+  grid-column: 3;
+}
+
+.price {
+  color: $primary-color;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.forward {
+  margin: 20px 0 10px;
+}
+
+.textSecondary {
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+  color: $secondary-color;
+}
+
+.flightTime {
+  line-height: 21px;
+  margin: 0;
+}

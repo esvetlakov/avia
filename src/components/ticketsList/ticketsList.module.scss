@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+
+.ticketsList {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: $screen-tablet) {
+      margin: 0;
+    }
+}
+
+.loader {
+    text-align: center;
+    width: 48px;
+    height: 48px;
+    border: 5px solid $primary-color;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 auto 20px auto;
+    animation: rotation 1s linear infinite;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.loadMoreBtn {
+    background: $primary-color;
+    display: flex;
+    margin-bottom: 40px;
+    width: 100%;
+    height: 50px;
+    border: none;
+    font-size: 12px;
+    line-height: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    @media (max-width: $screen-tablet) {
+      width: 95%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+}
+
+.notFound {
+    align-self: center;
+    font-family: 'Open Sans';
+    font-size: 20px;
+    text-align: center;
+    
+    &__text{
+        margin: 0;
+    }
+
+    &__smile {
+        font-size: 40px;
+    }
+}
